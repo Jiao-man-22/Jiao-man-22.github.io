@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *,ul,span,li,p,a{margin: 0;padding: 0;list-style: none;text-decoration: none;}
+    .header{width: 1600px;height: 40px;background-color: black;}
+    .header div{float: left;width: 100px;height: 40px;text-align:left;line-height: 40px;margin-left: 20px;}
+    .header div:first-child{margin-left: 100px;}
+    .header div a{color: white;font-weight: bold;text-decoration: none;}
+    .header div:nth-child(5){width: 600px;}
+    .nav{width: 1600px;height: 45px;background: rgba(0,0,0,0.4);}
+    .sbutton a{color:#999;text-decoration: none;}
+    .sbutton a:hover{color: #fff;}
+    @font-face{font-family: 'freshskin';src:url('fonts/iconfont.ttf');}
+    .sbutton{width: 280px;height: 32px;font-family: "freshskin";text-align: center;line-height: 32px;font-size: 16px;margin-left: 1200px;}
+    .sbutton a:hover{box-shadow: 0 0 0 16px #fff inset;color: yellow;}
+    .sbutton a{display: inline-block;width: 32px;height: 32px;color: #fff;box-shadow: 0 0 0 1px #fff inset;transition: box-shadow 0.3s ease 0s;border-radius: 16px;margin-left: 30px;margin-top: 10px;}
+    .nav .nav-{float: left;margin-left: 100px;line-height: 45px;height: 45px;}
+    .nav .nav- img{margin-top: 7px;}
+    #container{width: 1600px;height: 700px;overflow: hidden;position: relative;}
+    #container img{width: 1600px;height: 700px;float: left;}
+    #list{width:4800px;height: 700px;position: absolute;z-index: 1;}
+    #buttons{position: absolute; left: 750px;bottom: 20px;z-index: 2; height: 10px;width: 120px;}
+    #buttons span{float: left;margin-right: 5px;width: 20px;height: 2px;border: 1px solid #fff; background: #333;cursor: pointer;}
+    #buttons .on{background: orangered;}
+    .arrow{position: absolute;top: 300px;z-index: 2;display: none;width: 40px;height: 40px;font-size: 36px;font-weight: bold;line-height: 39px;text-align: center;color: #fff;background-color: rgba(0,0,0,.3);cursor: pointer;}
+    .arrow:hover{background-color: rgba(0,0,0,.7);}
+    #container:hover .arrow{ display: block;}
+    #prev{ left: 20px;}
+    #next{ right: 20px;}
+    #container .word{z-index: 10;position: absolute;top:-300px;color: white;text-align: center;left: 520px;transition: all 1s;}
+    .container-img img{z-index: 10;margin-left: 4px;margin-top: 3px;}
+    .container-img{position: absolute;top:-500px;left: 790px;width: 27px;height: 27px;border: 1px solid white;border-radius: 50px;z-index: 10;transition: all 1s;}
+    .container-img:hover{background-color: grey;}
+    #container:hover .word{top:300px;transition: all 1s;}
+    #container:hover .container-img{top:500px;transition: all 1s;}
+    .content{width: 1200px;height: 750px;margin:0 auto; margin-left: 200px;margin-top: 30px;}
+    .content li{width: 1200px;height:15px;text-align: center;font-size: 20px;margin-top: 20px;}
+    .content div{float: left;margin-top: 10px;margin-right: 5px;}
+    .content .content-four,.content-five{margin-right: 20px;}
+    .content1 li{width: 1200px;height:15px;text-align: center;font-size: 20px;margin-top: 20px;}
+    .content1 div{float: left;margin-top: 10px;margin-right: 5px;}
+    .content1{width: 1200px;height: 850px;margin:0 auto; margin-left: 200px;margin-top: 30px;border-top: 1px solid #000;border-bottom: 1px solid #000;}
+    .footer{width:1600px;height: 150px;background-color: black;color: white;margin-top: 50px;text-align: center;}
+    .footer img{position:relative;top: -40px;}
+    .footer .jiantou{position:relative;top: -17px;z-index: 10;font-size: 10px;}
+</style>
+<script>
+    window.onload=function(){
+            var list=document.getElementById('list');
+            var prev=document.getElementById('prev');
+            var next=document.getElementById('next');
+            function animate(a){
+                list.style.left=list.offsetLeft+a+"px";
+            }
+            var buttons=document.getElementById('buttons').getElementsByTagName('span');
+            var index=1;
+            function buttonShow(){
+                for(var i=0;i<buttons.length;i++){
+                    buttons[i].className="";
+                }
+                buttons[index-1].className="on";
+            }
+            prev.onclick=function(){
+                index-=1;
+                if(index<1){
+                    index=3;
+                }
+                buttonShow();
+                if (list.offsetLeft==0) {
+
+                    list.style.left=-4800+'px';
+                }
+                 animate(1600);
+            }
+            next.onclick=function(){
+                 index+=1;
+                if(index>3){
+                    index=1;
+                }
+                buttonShow();
+                if (list.offsetLeft==-3200) {
+
+                    list.style.left=0+'px';
+                }
+                animate(-1600);
+            }
+            var timer;
+            function play(){
+                timer=setInterval(function(){
+                prev.onclick();
+            },5000);
+            }
+            play();
+           for(var i=0;i<buttons.length;i++){
+                buttons[i].onclick=function(){
+                    var clickIndex=parseInt(this.getAttribute('index'));
+                    var offset=1600*(index-clickIndex);
+                    animate(offset);
+                    index=clickIndex;
+                    buttonShow();
+                }
+           }  
+        }
+</script>
+</head>
+<body>
+    <header class="header">
+        <div><a href="">开课吧首页</a></div>
+        <div><a href="">创业微学院</a></div>
+        <div><a href="">摄影微学院</a></div>
+        <div><a href="">微聚</a></div>
+        <div><a href="">论坛</a></div>
+        <div><a href="">登陆|注册</a></div>
+        <div><a href="">播放记录</a></div>
+        <div><a href="">APP下载</a></div>
+    </header>
+    <nav class="nav">
+        <div class="nav-"><img src="images/LOGO.png" alt=""></div>
+        <div class="nav-">个人中心</div>
+        <div class="nav-">视频播放</div>
+        <div class="sbutton">
+            <a href="#">&#xe65e;</a>
+            <a href="#">&#xe608;</a>
+            <a href="#">&#xf012a;</a>
+            <a href="#">&#xe68e;</a>
+        </div>
+    </nav>
+    <div id="container">
+        <div id="list"> 
+            <img src="images/banner01.jpg">
+            <img src="images/banner02.jpg"> 
+            <img src="images/banner03.jpg">
+        </div>
+        <div id="buttons">
+            <span index="1" class="on"></span>
+            <span index="2"></span>
+            <span index="3"></span>
+        </div>
+        <a href="#" id="prev" class="arrow"><</a>
+        <a href="#" id="next" class="arrow">></a>
+        <div class="word">迅速发现想找打到的内容|尽享国内外优秀视频资源|分享摄影心得结识新朋友<br><br>向下开启 开课吧.摄影之路</div>
+        <a href="#content"><div class="container-img"><img src="images/jiantou.png" alt="" style="width: 20px;height: 20px"></div></a>
+    </div>
+    <div class="content" id="content">
+        <li>最热视频-大家都在看</li><br><br>
+        <div class="content-one"><img src="images/pic01.jpg" alt=""></div>
+        <div class="content-two"><img src="images/pic02.jpg" alt=""></div>
+        <div class="content-three"><img src="images/pic03.jpg" alt=""></div>
+        <div class="content-four"><img src="images/pic04.jpg" alt=""></div>
+        <div class="content-five"><img src="images/pic05.jpg" alt=""></div>
+        <div class="content-six"><img src="images/pic06.jpg" alt=""></div>
+    </div>
+    <div class="content1">
+        <li>大咖推荐-看看牛人分享</li><br><br>
+        <div class="content-one"><img src="images/pic07.jpg" alt=""></div>
+        <div class="content-two"><img src="images/pic07.jpg" alt=""></div>
+        <div class="content-three"><img src="images/pic07.jpg" alt=""></div>
+        <div class="content-four"><img src="images/pic07.jpg" alt=""></div>
+    </div>
+    <div class="footer">
+        <a href="" style="color: white;"><div class="jiantou">Top</div><img src="images/sanjiao.png"></a>
+        <div>Copyright@2015 开课吧 kaikeba.com 版权所有</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *,ul,span,li,p,a{margin: 0;padding: 0;list-style: none;text-decoration: none;}
+    .header{width: 1600px;height: 40px;background-color: black;}
+    .header div{float: left;width: 100px;height: 40px;text-align:left;line-height: 40px;margin-left: 20px;}
+    .header div:first-child{margin-left: 100px;}
+    .header div a{color: white;font-weight: bold;text-decoration: none;}
+    .header div:nth-child(5){width: 600px;}
+    .nav{width: 1600px;height: 45px;background: rgba(0,0,0,0.4);}
+    .sbutton a{color:#999;text-decoration: none;}
+    .sbutton a:hover{color: #fff;}
+    @font-face{font-family: 'freshskin';src:url('fonts/iconfont.ttf');}
+    .sbutton{width: 280px;height: 32px;font-family: "freshskin";text-align: center;line-height: 32px;font-size: 16px;margin-left: 1200px;}
+    .sbutton a:hover{box-shadow: 0 0 0 16px #fff inset;color: yellow;}
+    .sbutton a{display: inline-block;width: 32px;height: 32px;color: #fff;box-shadow: 0 0 0 1px #fff inset;transition: box-shadow 0.3s ease 0s;border-radius: 16px;margin-left: 30px;margin-top: 10px;}
+    .nav .nav-{float: left;margin-left: 100px;line-height: 45px;height: 45px;}
+    .nav .nav- img{margin-top: 7px;}
+    #container{width: 1600px;height: 700px;overflow: hidden;position: relative;}
+    .footer{width:1600px;height: 150px;background-color: black;color: white;margin-top: 50px;text-align: center;}
+    .footer img{position:relative;top: -40px;}
+    .footer .jiantou{position:relative;top: -17px;z-index: 10;font-size: 10px;}
+</style>
+</head>
+<body>
+    <header class="header">
+        <div><a href="">开课吧首页</a></div>
+        <div><a href="">创业微学院</a></div>
+        <div><a href="">摄影微学院</a></div>
+        <div><a href="">微聚</a></div>
+        <div><a href="">论坛</a></div>
+        <div><a href="">登陆|注册</a></div>
+        <div><a href="">播放记录</a></div>
+        <div><a href="">APP下载</a></div>
+    </header>        
+    <nav class="nav">
+        <div class="nav-"><img src="images/LOGO.png" alt=""></div>
+        <div class="nav-">个人中心</div>
+        <div class="nav-">视频播放</div>
+        <div class="sbutton">
+            <a href="#">&#xe65e;</a>
+            <a href="#">&#xe608;</a>
+            <a href="#">&#xf012a;</a>
+            <a href="#">&#xe68e;</a>
+        </div>
+    </nav>
+    <div id="container">
+    </div>
+    <div class="footer">
+        <a href="" style="color: white;"><div class="jiantou">Top</div><img src="images/sanjiao.png"></a>
+        <div>Copyright@2015 开课吧 kaikeba.com 版权所有</div>
+    </div>
+</body>
+</html>
